@@ -38,14 +38,14 @@ Interactive prompts will give you instructions as you operate the program.
 The following command will run the main application - run this first to setup your configuration.
 
 ```
-python downloadhygeine.py
+python2.7 downloadhygeine.py
 ```
 
 The following command will bring up the download manager, it will allow you to add downloads,update existing downloads,fork existing downloads or remove them. 
 This also uses an interactive prompt:
 
 ```
-python manage-downloads.py
+python2.7 manage-downloads.py
 ```
 
 Since it is currently under development, no setup or system installation exists.
