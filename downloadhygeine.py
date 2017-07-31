@@ -143,7 +143,7 @@ class DownloadHygeine:
 		try:
 			cnf={}
 			os.chown(config,os.getuid(),os.getgid()) #make sure the current user owns this file. 
-			os.chmod(config,0600) #owner can read/write(-exec),nobody else can rwx it.
+			os.chmod(config,0o0600) #owner can read/write(-exec),nobody else can rwx it.
 			with open(config,"r") as cf:
 				cnf=json.loads(cf.read().strip())
 			self.conf=cnf	
@@ -240,7 +240,7 @@ class DownloadHygeine:
 			with open(config,"w+") as cf:
 				cf.write(json.dumps(self.conf,indent=4,sort_keys=True))
 			os.chown(config,os.getuid(),os.getgid()) #make sure the current user owns this file. 
-			os.chmod(config,0600) #owner read/write,nobody else can rwx it.		
+			os.chmod(config,0o0600) #owner read/write,nobody else can rwx it.		
 		except Exception as e:
 			print(color["red"]+"Error saving the configuration file at: "+config)
 			print(traceback.print_exc())
@@ -266,7 +266,7 @@ class DownloadHygeine:
 			return False
 		else:
 			self.conf["fetchtool"]=fetchtool	
-		if self.conf["torrents"] == 1 and None is torrentapp):
+		if self.conf["torrents"] == 1 and None is torrentapp:
 			raise ValueError("Torrent downloads configured,however the configured bittorrent client cannot be executed:"+self.conf["torrentapp"])
 			return False
 		elif self.conf["torrents"] == 1:

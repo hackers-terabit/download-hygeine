@@ -180,7 +180,7 @@ When finished enter 'EOF' without quotes on it's own line:
 	'''
 	def load_keys(self,showkeys=False):
 		os.chown(self.trusted_keys_path,os.getuid(),os.getgid()) #make sure the current user owns this file. 
-		os.chmod(self.trusted_keys_path,0600) #owner read/write,nobody else can rwx it.
+		os.chmod(self.trusted_keys_path,0o0600) #owner read/write,nobody else can rwx it.
 		with open(self.trusted_keys_path,"r") as tf:
 			for line in tf.read().splitlines():
 				if len(line.strip())>0 and line.strip()[0] != "#":
@@ -248,7 +248,7 @@ Enter blank or any other value if you do not trust this key:
 
 		if choice.strip() == "TRUSTED-KEY":
 			os.chown(self.trusted_keys_path,os.getuid(),os.getgid()) #make sure the current user owns this file. 
-			os.chmod(self.trusted_keys_path,0600) #owner read/write,nobody else can rwx it.
+			os.chmod(self.trusted_keys_path,0o0600) #owner read/write,nobody else can rwx it.
 			self.trusted_keys.add(json.dumps(keyinfo))
 			with open(self.trusted_keys_path,"war+") as tf:
 				tf.write("\n"+json.dumps(keyinfo,sort_keys=True))

@@ -96,7 +96,7 @@ def add(dh):
 				mirrors.append({"mirrorname":entry[0].strip(),"url":entry[1].strip()+suffix.strip()})
 	if len(mirrors)>0:
 		download["mirrors"]=mirrors
-	if (dh.util.yesno_choice("Have you verified the autenticity of the downloaded file '"+fname+"' ? (such as with GPG validation)?") and 
+	if (dh.util.yesno_choice("Have you verified the authenticity of the downloaded file '"+fname+"' ? (such as with GPG validation)?") and 
 		dh.util.yesno_choice("Sign this download? ")):	
 		content=json.dumps(download,sort_keys=True)
 		exported=dh.crypto.sign_and_export(content)
